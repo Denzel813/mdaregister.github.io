@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDA Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .header img {
+            max-width: 100px;
+            display: block;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            text-align: center;
+        }
+        input, select, button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #003366;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #0055aa;
+        }
+        #message {
+            text-align: center;
+            font-size: 16px;
+            margin-top: 10px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="images/mkpdebate.png" alt="Tournament Logo"> 
+        <h1>Registration</h1>
+    </div>
+
+    <div class="container">
+        <h2>Register for the Debate Tournament</h2>
+        <form id="registerForm">
+            <input type="text" id="name" placeholder="Your Name" required><br>
+            <input type="text" id="school" placeholder="Your School" required><br>
+            <input type="number" id="grade" placeholder="Your Grade" min="1" max="12" required><br>
+            <input type="text" id="speakerno" placeholder="Speaker Number" required><br>
+            <select id="division" required>
+                <option value="">Select Division</option>
+                <option value="Junior">Junior</option>
+                <option value="Senior">Senior</option>
+            </select><br>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const school = document.getElementById('school').value;
+            const grade = document.getElementById('grade').value;
+            const speakerno = document.getElementById('speakerno').value;
+            const division = document.getElementById('division').value;
+            
+            // Display success message (we will later send data to Google Sheets)
+            document.getElementById('message').innerText = "Registration Successful! (Backend coming soon...)";
+            
+            // Clear form
+            document.getElementById('registerForm').reset();
+        });
+    </script>
+
+</body>
+</html>
