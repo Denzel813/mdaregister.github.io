@@ -84,21 +84,37 @@
     </div>
 
     <script>
-        document.getElementById('registerForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            const school = document.getElementById('school').value;
-            const grade = document.getElementById('grade').value;
-            const speakerno = document.getElementById('speakerno').value;
-            const division = document.getElementById('division').value;
-            
-            // Display success message (we will later send data to Google Sheets)
-            document.getElementById('message').innerText = "Registration Successful! (Backend coming soon...)";
-            
-            // Clear form
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const formData = {
+            name: document.getElementById('name').value,
+            school: document.getElementById('school').value,
+            grade: document.getElementById('grade').value,
+            grade: document.getElementById('speakerno').value,
+            division: document.getElementById('division').value
+        };
+
+        // Replace with your actual Google Apps Script Web App URL
+        const scriptURL = "https://script.google.com/macros/s/AKfycbxnDIs-ZDDoAT7fV7NXwKRBuK-HbX8smc2dlvSfmDG4YCKKHawnXWwOer_qXoioRnX4dA/exec";
+
+        fetch(scriptURL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('message').innerText = "Registration Successful!";
             document.getElementById('registerForm').reset();
+        })
+        .catch(error => {
+            console.error("Error!", error);
+            document.getElementById('message').innerText = "Error submitting form.";
         });
-    </script>
+    });
+</script>
+
 
 </body>
 </html>
