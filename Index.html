@@ -71,7 +71,7 @@
         <form id="registerForm">
             <input type="text" id="name" placeholder="Your Name" required><br>
             <input type="text" id="school" placeholder="Your School" required><br>
-            <input type="number" id="grade" placeholder="Your Grade" min="1" max="12" required><br>
+            <input type="number" id="grade" placeholder="Your Grade" min="8" max="12" required><br>
             <input type="text" id="speakerno" placeholder="Speaker Number" required><br>
             <select id="division" required>
                 <option value="">Select Division</option>
@@ -91,12 +91,12 @@
             name: document.getElementById('name').value,
             school: document.getElementById('school').value,
             grade: document.getElementById('grade').value,
-            grade: document.getElementById('speakerno').value,
+            speakerno: document.getElementById('speakerno').value,
             division: document.getElementById('division').value
         };
 
         // Replace with your actual Google Apps Script Web App URL
-        const scriptURL = "https://script.google.com/macros/s/AKfycbxnDIs-ZDDoAT7fV7NXwKRBuK-HbX8smc2dlvSfmDG4YCKKHawnXWwOer_qXoioRnX4dA/exec";
+        const scriptURL = "https://script.google.com/macros/s/AKfycbylHGz-xxRwdXpWZrsDRZwWReahc-GROf3xeket_KpNrfxGwSe2xsXbaSqzGc2IOZZGdw/exec";
 
         fetch(scriptURL, {
             method: "POST",
