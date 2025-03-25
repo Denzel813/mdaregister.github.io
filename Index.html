@@ -89,7 +89,6 @@
 
     const formData = {
         name: document.getElementById("name").value,
-        speakerno: document.getElementById("speakerno").value,
         school: document.getElementById("school").value,
         grade: document.getElementById("grade").value,
         division: document.getElementById("division").value
@@ -102,9 +101,9 @@
         },
         body: JSON.stringify(formData)
     })
-    .then(response => response.text())  // Change from .json() to .text() to see the exact response
+    .then(response => response.json())
     .then(data => {
-        console.log("Response from Google Apps Script:", data);
+        console.log("Success:", data);
         alert("Registration successful!");
     })
     .catch(error => {
@@ -112,7 +111,6 @@
         alert("Something went wrong. Please try again.");
     });
 });
-
 
 </script>
 
