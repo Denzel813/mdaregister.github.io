@@ -70,9 +70,9 @@
         <h2>Register for the Debate Tournament</h2>
         <form id="registerForm">
             <input type="text" id="name" placeholder="Your Name" required><br>
+            <input type="text" id="speakerno" placeholder="Speaker Number" required><br>
             <input type="text" id="school" placeholder="Your School" required><br>
             <input type="number" id="grade" placeholder="Your Grade" min="8" max="12" required><br>
-            <input type="text" id="speakerno" placeholder="Speaker Number" required><br>
             <select id="division" required>
                 <option value="">Select Division</option>
                 <option value="Junior">Junior</option>
@@ -89,15 +89,15 @@
 
         const formData = {
             name: document.getElementById('name').value.trim(),
+            speakerno: document.getElementById('speakerno').value.trim(),
             school: document.getElementById('school').value.trim(),
             grade: document.getElementById('grade').value.trim(),
-            speakerno: document.getElementById('speakerno').value.trim(),
             division: document.getElementById('division').value.trim()
         };
 
         console.log("Sending Data:", formData);
 
-        const scriptURL = "https://script.google.com/macros/s/AKfycbwTo2PuoZq9cEUut3_Ze1p7t6lZ1V8aNEGQdUfrqBATbrR0DpZ_MwobVu3rHFPoD-gP-A/exec";
+        const scriptURL = "YOUR_NEW_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
 
         fetch(scriptURL, {
             method: "POST",
@@ -120,6 +120,7 @@
         });
     });
 </script>
+
 
 
 
