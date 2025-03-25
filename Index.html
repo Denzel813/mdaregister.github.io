@@ -84,41 +84,35 @@
     </div>
 
     <script>
-    document.getElementById('registerForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+    document.getElementById("yourFormID").addEventListener("submit", function(event) {
+    event.preventDefault();
 
-        const formData = {
-            name: document.getElementById('name').value.trim(),
-            speakerno: document.getElementById('speakerno').value.trim(),
-            school: document.getElementById('school').value.trim(),
-            grade: document.getElementById('grade').value.trim(),
-            division: document.getElementById('division').value.trim()
-        };
+    const formData = {
+        name: document.getElementById("name").value,
+        speakerno: document.getElementById("speakerno").value,
+        school: document.getElementById("school").value,
+        grade: document.getElementById("grade").value,
+        division: document.getElementById("division").value
+    };
 
-        console.log("Sending Data:", formData);
-
-        const scriptURL = "https://script.google.com/macros/s/AKfycbxcvvmMxZdf84BsVAmCf-SuKtV-EPsxLAFUGLEVMq3INgDsVJ7oMR1wguoN9TKQ6mgXhw/exec";
-
-        fetch(scriptURL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log("Response from server:", data);
-            if (data.status === "Success") {
-                document.getElementById('message').innerText = "Registration Successful!";
-                document.getElementById('registerForm').reset();
-            } else {
-                document.getElementById('message').innerText = "Error: " + data.message;
-            }
-        })
-        .catch(error => {
-            console.error("Error!", error);
-            document.getElementById('message').innerText = "Error submitting form.";
-        });
+    fetch("https://script.google.com/macros/s/AKfycbxcvvmMxZdf84BsVAmCf-SuKtV-EPsxLAFUGLEVMq3INgDsVJ7oMR1wguoN9TKQ6mgXhw/exec", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Success:", data);
+        alert("Registration successful!");
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Something went wrong. Please try again.");
     });
+});
+
 </script>
 
 
