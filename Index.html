@@ -102,9 +102,9 @@
         },
         body: JSON.stringify(formData)
     })
-    .then(response => response.json())
+    .then(response => response.text())  // Change from .json() to .text() to see the exact response
     .then(data => {
-        console.log("Success:", data);
+        console.log("Response from Google Apps Script:", data);
         alert("Registration successful!");
     })
     .catch(error => {
@@ -112,6 +112,7 @@
         alert("Something went wrong. Please try again.");
     });
 });
+
 
 </script>
 
