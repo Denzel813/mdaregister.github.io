@@ -88,11 +88,11 @@
         event.preventDefault();
         
         const formData = {
-            name: document.getElementById('name').value,
-            school: document.getElementById('school').value,
-            grade: document.getElementById('grade').value,
-            speakerno: document.getElementById('speakerno').value,
-            division: document.getElementById('division').value
+            name: document.getElementById('name').value.trim(),
+            school: document.getElementById('school').value.trim(),
+            grade: document.getElementById('grade').value.trim(),
+            speakerno: document.getElementById('speakerno').value.trim(),
+            division: document.getElementById('division').value.trim()
         };
 
         console.log("Sending Data:", formData);
