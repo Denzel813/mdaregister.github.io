@@ -86,7 +86,7 @@
     <script>
     document.getElementById('registerForm').addEventListener('submit', function(event) {
         event.preventDefault();
-        
+
         const formData = {
             name: document.getElementById('name').value.trim(),
             school: document.getElementById('school').value.trim(),
@@ -97,18 +97,22 @@
 
         console.log("Sending Data:", formData);
 
-        // Replace with your actual Google Apps Script Web App URL
-        const scriptURL = "https://script.google.com/macros/s/AKfycbwxsvj9DKPuPv2vo8mOFElR9nYseFqjCMO-HvIFCq80X3zV2xe5UzbY1W6EbRTW9qy36w/exec";
+        const scriptURL = "https://script.google.com/macros/s/AKfycbwTo2PuoZq9cEUut3_Ze1p7t6lZ1V8aNEGQdUfrqBATbrR0DpZ_MwobVu3rHFPoD-gP-A/exec";
 
         fetch(scriptURL, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)
         })
-        .then(response => response.text())
+        .then(response => response.json())
         .then(data => {
-            document.getElementById('message').innerText = "Registration Successful!";
-            document.getElementById('registerForm').reset();
+            console.log("Response from server:", data);
+            if (data.status === "Success") {
+                document.getElementById('message').innerText = "Registration Successful!";
+                document.getElementById('registerForm').reset();
+            } else {
+                document.getElementById('message').innerText = "Error: " + data.message;
+            }
         })
         .catch(error => {
             console.error("Error!", error);
@@ -116,6 +120,7 @@
         });
     });
 </script>
+
 
 
 </body>
